@@ -22,7 +22,9 @@ col.insert_one({
   "usage": int(sense.active_power),
   "solar": int(sense.active_solar_power),
   "day": now.weekday(),
+  "createdAt": now.weekday(),
   "expireAt": now + timedelta(seconds=604800),
+  'createdAt': now,
 })
 
 # only write monthly data at the end of the month
