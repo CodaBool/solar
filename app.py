@@ -16,7 +16,7 @@ client = MongoClient(os.environ.get("MONGO_URI"))
 
 now = datetime.now()
 db = client['myFirstDatabase']
-col = db['sense_daily']
+col = db['days']
 col.create_index('expireAt', expireAfterSeconds=0)
 col.insert_one({
   "usage": int(sense.active_power),
@@ -35,7 +35,7 @@ if not is_last_day and now.time() < target_time.time():
   exit(0)
 
 # Check if a document exists with the given query
-col = db['sense_montly']
+col = db['months']
 document_exists = col.count_documents({
   'month': now.month,
   'year': now.year
