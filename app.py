@@ -51,6 +51,7 @@ if not document_exists:
     "average_solar": int(sense.monthly_production),
     "month": now.month,
     "year": now.year,
+    'createdAt': now,
   })
 else:
   print("no need to update monthly data")
