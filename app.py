@@ -17,7 +17,7 @@ client = MongoClient(os.environ.get("MONGO_URI"))
 now = datetime.now()
 est = now - timedelta(hours = 4) # est is -4
 db = client['myFirstDatabase']
-col = db['dd']
+col = db['days']
 col.create_index('expireAt', expireAfterSeconds=0)
 col.insert_one({
   "usage": int(sense.active_power),
