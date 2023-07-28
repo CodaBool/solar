@@ -25,7 +25,7 @@ col.insert_one({
   "usage": int(sense.active_power),
   "solar": int(sense.active_solar_power),
   "day": now.weekday(),
-  "expireAt": now + timedelta(seconds=604800),
+  "expireAt": now + timedelta(seconds=518400),
   'createdAt': now,
 })
 
