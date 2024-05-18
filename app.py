@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from datetime import datetime, timedelta
 from pytz import timezone
 import calendar
+import pytz
 
 load_dotenv()
 sense = Senseable()
@@ -32,7 +33,8 @@ col.insert_one({
 # only write monthly data at the end of the month
 last_day = calendar.monthrange(now.date().year, now.date().month)[1]
 is_last_day = now.date().day == last_day
-target_time = datetime.combine(now.date(), datetime.min.time()) + timedelta(hours=23, minutes=55)
+#target_time = datetime.combine(now.date(), datetime.min.time()) + timedelta(hours=23, minutes=55)
+target_time = datetime.combine(now.date(), datetime.min.time(), tzinfo=timezone('US/Eastern')) + timedelta(hours=23, minutes=55)
 if not is_last_day and now.time() < target_time.time():
   print(f"month data upload in {last_day - now.date().day} days and {target_time-now} hours")
   exit(0)
